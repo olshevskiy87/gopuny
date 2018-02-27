@@ -1,6 +1,7 @@
 GoPuny
 ======
 
+![GoPuny](gopuny.png)
 [![Build Status](https://travis-ci.org/olshevskiy87/gopuny.svg?branch=master)](https://travis-ci.org/olshevskiy87/gopuny) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![Go Report Card](https://goreportcard.com/badge/github.com/olshevskiy87/gopuny)](https://goreportcard.com/report/github.com/olshevskiy87/gopuny)
 
 A package and CLI tool to use [SAPO](http://sapo.pt/)'s URL shortening service.
