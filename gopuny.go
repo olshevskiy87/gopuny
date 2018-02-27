@@ -22,7 +22,7 @@ func main() {
 
 	puny, err := punyurl.New(args.URL)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 
@@ -30,19 +30,19 @@ func main() {
 	case actionShort:
 		res, err := puny.Short()
 		if err != nil {
-			fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}
 		fmt.Println(res)
 	case actionExpand:
 		res, err := puny.Expand()
 		if err != nil {
-			fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}
 		fmt.Println(res.URL)
 	default:
-		fmt.Printf("invalid action: %s\n", args.Action)
+		fmt.Fprintf(os.Stderr, "invalid action: %s\n", args.Action)
 		argParser.WriteHelp(os.Stdout)
 		os.Exit(1)
 	}
