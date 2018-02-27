@@ -1,6 +1,8 @@
 GoPuny
 ======
 
+[![Build Status](https://travis-ci.org/olshevskiy87/gopuny.svg?branch=master)](https://travis-ci.org/olshevskiy87/gopuny)
+
 A package and CLI tool to use [SAPO](http://sapo.pt/)'s URL shortening service.
 
 Install
