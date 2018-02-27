@@ -6,14 +6,14 @@ GoPuny
 A package and CLI tool to use [SAPO](http://sapo.pt/)'s URL shortening service.
 
 Install
-=======
+-------
 
 ```bash
 $ go get github.com/olshevskiy87/gopuny
 ```
 
 Usage
-=====
+-----
 
 1. CLI tool `gopuny`
 
@@ -72,11 +72,11 @@ func main() {
 ```
 
 Motivations
-===========
+-----------
 
 Inspired by perl-module [WWW::Shorten::PunyURL](http://search.cpan.org/dist/WWW-Shorten-PunyURL/)
 
 License
-=======
+-------
 
 MIT. See LICENSE for details.
