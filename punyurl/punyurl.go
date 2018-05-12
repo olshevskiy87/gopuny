@@ -25,24 +25,21 @@ func New(url string) (*PunyURL, error) {
 
 // Short transforms a long url and returns a pointer to Result with short url
 func (p *PunyURL) Short() (*result.Result, error) {
-	res, err := request.Do("GetCompressedURLByURL", p.URL)
-	if err != nil {
-		return nil, err
-	}
-	if res.ASCII == "" {
-		return nil, fmt.Errorf("could not short url: %s", p.URL)
-	}
-	return res, nil
+	return p.performAction("GetCompressedURLByURL")
 }
 
 // Expand transforms a short url and returns a pointer to Result with long url
 func (p *PunyURL) Expand() (*result.Result, error) {
-	res, err := request.Do("GetURLByCompressedURL", p.URL)
+	return p.performAction("GetURLByCompressedURL")
+}
+
+func (p *PunyURL) performAction(action string) (*result.Result, error) {
+	res, err := request.Do(action, p.URL)
 	if err != nil {
 		return nil, err
 	}
 	if res.URL == "" {
-		return nil, fmt.Errorf("could not expand url: %s", p.URL)
+		return nil, fmt.Errorf("retrieved url is empty")
 	}
 	return res, nil
 }
