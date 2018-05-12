@@ -19,9 +19,15 @@ func prepareURL(inputURL string) string {
 	return url.QueryEscape(strings.TrimSpace(inputURL))
 }
 
+// strategies names that could be used for queries
+const (
+	StrategyShort  = "GetCompressedURLByURL"
+	StrategyExpand = "GetURLByCompressedURL"
+)
+
 var strategies = map[string]bool{
-	"GetCompressedURLByURL": true,
-	"GetURLByCompressedURL": true,
+	StrategyShort:  true,
+	StrategyExpand: true,
 }
 
 func closeResponseBody(body io.Closer) {

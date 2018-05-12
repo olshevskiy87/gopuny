@@ -25,16 +25,16 @@ func New(url string) (*PunyURL, error) {
 
 // Short transforms a long url and returns a pointer to Result with short url
 func (p *PunyURL) Short() (*result.Result, error) {
-	return p.performAction("GetCompressedURLByURL")
+	return p.applyStrategy(request.StrategyShort)
 }
 
 // Expand transforms a short url and returns a pointer to Result with long url
 func (p *PunyURL) Expand() (*result.Result, error) {
-	return p.performAction("GetURLByCompressedURL")
+	return p.applyStrategy(request.StrategyExpand)
 }
 
-func (p *PunyURL) performAction(action string) (*result.Result, error) {
-	res, err := request.Do(action, p.URL)
+func (p *PunyURL) applyStrategy(strategy string) (*result.Result, error) {
+	res, err := request.Do(strategy, p.URL)
 	if err != nil {
 		return nil, err
 	}
