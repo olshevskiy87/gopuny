@@ -1,19 +1,12 @@
 language: go
 
 go:
-    - "1.7"
-    - "1.8"
-    - "1.9"
-    - "1.10"
+    - "1.12"
+    - "1.13"
 
 before_script:
-    - GO_FILES=$(find . -iname '*.go' -type f)
-    - go get github.com/golang/lint/golint
-    - go get honnef.co/go/tools/cmd/megacheck
+    - curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $GOPATH/bin v1.21.0
 
 script:
-    - test -z $(gofmt -s -l $GO_FILES)
-    - go vet ./...
-    - megacheck ./...
-    - golint -set_exit_status $(go list ./...)
+    - golangci-lint run
     - test -z $(go install)
